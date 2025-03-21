@@ -1,38 +1,963 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KVESTPORTAL🎲RU - Лучший квест в реальности</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="images/32m.png" rel="shortcut icon" type="image/x-icon">
-    <link href="images/256min.png" rel="apple-touch-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- Запрет масштабирования -->
+  <meta name="google" content="notranslate"> <!-- Отключение автоперевода в Google Chrome -->
+  <title>KVESTPORTAL🎲RU - Лучший квест на планете</title>
+      <noscript>
+        <style>
+            .noscript-warning {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: #ffcc00;
+                padding: 20px;
+                text-align: center;
+                font-size: 18px;
+                border-bottom: 2px solid #ff9900;
+                z-index: 1000;
+            }
+        </style>
+    </noscript>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+  html, body {
+
+    margin: 0;
+    padding: 0;
+  }
+
+  img, video, .content, .page {
+    max-width: 100%;
+    height: auto;
+  }
+  
+    body {
+	
+
+
+
+      font-family: var(--matrix-font);  /* font-family: 'Philosopher', sans-serif; */
+
+      color: #fff;
+      min-height: 100vh;
+
+      touch-action: manipulation; /* Отключает масштабирование на touch-устройствах */
+    }
+
+
+
+
+    #preloader-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .portal-text {
+      font-size: 4rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      font-family: 'Philosopher', sans-serif;
+      justify-content: center;
+      margin-bottom: 20px;
+      width: auto; /* Ширина по содержимому */
+      padding: 0 5px; /* Отступы по 5 пикселей */
+      box-sizing: border-box;
+    }
+
+    #preloader {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      margin: 0 5px;
+    }
+
+    .loader {
+      width: 100%;
+      height: 100%;
+      border: 5px solid #ffffff33;
+      border-top: 5px solid #fff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      position: relative;
+    }
+
+    .loader::after {
+      content: attr(data-progress) '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 1.2rem;
+      animation: anti-spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes anti-spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(-360deg); }
+    }
+
+    .progress-bar-container {
+      width: auto; /* Ширина по содержимому */
+      height: 10px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 0 auto;
+      display: inline-block; /* Чтобы ширина была по содержимому */
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background-color: #00ff00;
+      transition: width 0.5s ease;
+    }
+
+    .page {
+      display: none;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      opacity: 0;
+      transition: opacity 0.5s;
+      padding-top: 5rem;
+    }
+
+
+
+    @media screen and (max-width: 600px) {
+      .portal-text {
+        font-size: 2rem;
+        padding: 0 5px; /* Отступы по 5 пикселей на мобильных устройствах */
+      }
+
+      #preloader {
+        width: 40px;
+        height: 40px;
+      }
+
+      .loader {
+        border-width: 3px;
+      }
+
+      .loader::after {
+        font-size: 0.8rem;
+      }
+
+      .progress-bar-container {
+        width: auto; /* Ширина по содержимому на мобильных устройствах */
+      }
+    }
+
+
+
+
+
+  /* описание */
+.container-1 {
+  position: relative;
+  border-radius: 15px;
+  padding: 10px;
+  border: 2px solid #00ff00;
+  max-width: 600px;
+  width: 100%;
+  margin: 20px auto !important;
+  line-height: 1.5;
+  text-align: left;
+  color: transparent;
+}
+
+/* Псевдоэлемент для фона */
+.container-1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(26, 26, 26, 0.7); /* Регулируемая прозрачность */
+  border-radius: 3px;
+  z-index: -1;
+  box-shadow: 0 0 15px #00ff00,
+              inset 0 0 15px #00ff00;
+  animation: borderGlow 3s infinite;
+  border-radius: 5px;
+}
+
+/* Псевдоэлемент для текста с градиентом */
+.container-1 > * {
+  background: -webkit-linear-gradient(45deg, #00ff00, #98ff98, #00cc00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+/* Стиль для эмодзи */
+.container-1 .emoji {
+  -webkit-text-fill-color: initial;
+  background: none;
+  color: white;
+  display: inline;
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px #00ff00,
+                inset 0 0 15px #00ff00;
+  }
+  50% {
+    box-shadow: 0 0 25px #00ff00,
+                inset 0 0 25px #00ff00;
+  }
+}
+  /* описание */
+
+
+
+
+
+
+
+
+  /* описание */
+    .container-3 {
+  background-color: rgba(26, 26, 26, 0.7); /* Прозрачность фона */
+  /* background-color: #1a1a1a; */
+    border-radius: 15px; 
+    padding: 10px;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 15px #00ff00,
+                inset 0 0 15px #00ff00;
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+/* font-family: var(--matrix-font); */
+  width: 100%; /* Добавляем адаптивную ширину */
+  margin: 20px auto !important; /* Центрируем контейнер */
+    line-height: 1.5;
+    color: #00ff00;
+    animation: borderGlow 3s infinite;
+	  text-align: justify; /* Выравнивание текста по ширине */
+	    letter-spacing: -1px; /* Уменьшаем отступы между буквами */
+    margin: 20px;
+	  margin-top: 20px; /* Reduce from default margin */
+  }
+
+  @keyframes borderGlow {
+    0%, 100% {
+      box-shadow: 0 0 15px #00ff00,
+                  inset 0 0 15px #00ff00;
+    }
+    50% {
+      box-shadow: 0 0 25px #00ff00,
+                  inset 0 0 25px #00ff00;
+    }
+  }
+  /* описание */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.window-8 {
+  background-color: rgba(26, 26, 26, 0.7); /* Прозрачность фона */
+  /* background-color: #1a1a1a; */
+  border-radius: 15px;
+    margin: 0 auto; /* Центрирование блока по горизонтали */
+    padding: 10px; /* Отступы внутри блока */
+  color: #00ff00;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+  animation: borderGlow 2s infinite;
+    text-align: center; /* Текст внутри блока выравнивается по левому краю */
+ font-family: var(--matrix-font); 
+}
+
+@keyframes borderGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+  }
+}
+
+
+
+
+
+
+/* вторая страница символ */
+  .quest-symbol {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    display: block;
+		margin-bottom: -3rem; /* Добавили отрицательный отступ */
+  }
+  
+  #page2 .quest-symbol {
+    stroke: #f9ca24;
+  }
+  
+    @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .floating {
+    animation: float 3s ease-in-out infinite;
+  }
+/* вторая страница символ */
+
+/* сноска */
+  .content {
+    margin-top: 2rem;
+    line-height: 1.6;
+    /* font-size: 1rem; */
+  }
+  
+    .highlight-box {
+    background: rgba(100, 255, 218, 0.1);
+    border-left: 4px solid #64ffda;
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 0 5px 5px 0;
+	max-width: 600px;
+  }
+  /* сноска */
+  
+  
+  .nav-link {
+  color: red; /* Красный цвет текста */
+  text-decoration: none; /* Убираем подчеркивание (опционально) */
+}
+
+.nav-link:hover {
+  color: darkred; /* Цвет при наведении (опционально) */
+}
+  
+  
+
+  
+  
+    /* Стили для страницы 1 */
+    body.page1 {
+ /* overflow: hidden;Запрет прокрутки внутри страниц */
+
+    }
+
+    /* Стили для страницы 2 */
+    body.page2 {
+        background: #000000; /* Черный фон для второй страницы */
+        color: green;
+        text-align: center;
+        padding: 20px;
+        height: 100vh;
+		
+				  display: flex;
+  flex-direction: column;
+  align-items: center; /* Выравнивание по центру по горизонтали */
+  justify-content: center; /* Выравнивание по центру по вертикали */
+  text-align: center; /* Выравнивание текста по центру */
+  height: 100vh; /* Занимает всю высоту экрана */
+    }
+	
+	/* Стили для страницы 3 */
+    body.page3 {
+        background: #000000; /* Черный фон для второй страницы */
+        color: #ffffff; /* Белый текст для второй страницы */
+        text-align: center;
+        padding: 20px;
+        height: 100vh;
+
+  overflow-y: auto; 
+  margin: 0;
+  
+  /* 
+  display: flex;
+  flex-direction: column; 
+  justify-content: flex-start; 
+  align-items: center;
+  */
+  
+    flex-direction: column;
+  align-items: center; /* Выравнивание по центру по горизонтали */
+  text-align: center; /* Выравнивание текста по центру */
+  
+  align-items: center;
+  min-height: 100vh;
+  background: var(--bg-color);
+  /* font-family: var(--matrix-font); */
+  overflow-x: hidden; 
+
+
+    }
+	
+
+#cube {
+  display: none; /* Скрываем куб по умолчанию */
+}
+
+
+/* Стилизация чекбокса */
+.custom-checkbox {
+  appearance: none; /* Убираем стандартный стиль */
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc; /* Граница неактивного чекбокса */
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Стиль для активного состояния (отмеченного чекбокса) */
+.custom-checkbox:checked {
+  background-color: #00FF00; /* Зелёный фон */
+  border-color: #00FF00; /* Зелёная граница */
+}
+
+/* Галочка (используем псевдоэлемент и border для создания галочки) */
+.custom-checkbox:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 12px;
+  border: solid black; /* Цвет галочки */
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -60%) rotate(45deg); /* Центрирование и поворот */
+}
+  </style>
+    <link rel="stylesheet" href="css/player.css">
+  <link rel="stylesheet" href="css/3styles.css">
+      <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/effects.css">
+  <link rel="stylesheet" href="css/popup1.css">
+<link rel='stylesheet' href="css/mxstyle.css">
+<link rel='stylesheet' href="css/logo.css">
+    <script src="script/script.js"></script>
+
+	<link href="images/32m.png" rel="shortcut icon" type="image/x-icon"><link href="images/256min.png" rel="apple-touch-icon">
 </head>
-<body>
-    <div class="timer-container">
-        <!-- Заголовок внутри контейнера -->
-        <div class="timer-title">Лучший квест на планете !<br>💎Будет на днях💎</div>
-        
-        <!-- Контейнер для элементов таймера -->
-        <div class="timer-items">
-            <div class="timer-item">
-                <div class="label">Дни</div>
-                <div id="days" class="time">00</div>
-            </div>
-            <div class="timer-item">
-                <div class="label">Часы</div>
-                <div id="hours" class="time">00</div>
-            </div>
-            <div class="timer-item">
-                <div class="label">Минуты</div>
-                <div id="minutes" class="time">00</div>
-            </div>
-            <div class="timer-item">
-                <div class="label">Секунды</div>
-                <div id="seconds" class="time">00</div>
-            </div>
+
+<body class="page1"> <!-- Добавлен класс page1 при первой загрузке -->
+
+    <noscript>
+        <div class="noscript-warning">
+            <p>⚠️ Сайт не работает без JavaScript. Пожалуйста, включите JavaScript в настройках вашего браузера.</p>
         </div>
+    </noscript>
+	
+
+
+  <div id="preloader-container">
+    <div class="portal-text" translate="no"> <!-- Отключение автоперевода для текста -->
+      <font color="#ff0000">KVEST</font>P<div id="preloader"><div class="loader" data-progress="0"></div></div>RTAL.RU
     </div>
-    <script src="script.js"></script>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- Контент -->
+  <div id="content">
+    <!-- Страница 1 -->
+    <div id="page1" class="page1">
+
+
+
+
+
+    <nav id="nav-top">
+		<span>КВЕСТ ПОРТАЛ 🌌 ЗДЕСЬ ЖИЗНЬ !</span>
+    </nav>
+
+<section class="cube animation " id="cube" onclick="disassembleCube()">
+        <article class="back">
+            <img src="images/6.png" class="load-image" alt="Image 6">
+        </article>
+        <article class="top">
+            <img src="images/5.png" class="load-image" alt="Image 5">
+        </article>
+        <article class="front">
+            <img src="images/1.png" class="load-image" alt="Image 1">
+        </article>
+        <article class="bottom">
+            <img src="images/2.png" class="load-image" alt="Image 2">
+        </article>
+        <article class="left">
+            <img src="images/3.png" class="load-image" alt="Image 3">
+        </article>
+        <article class="right">
+            <img src="images/4.png" class="load-image" alt="Image 4">
+        </article>
+    </section>
+
+  <nav id="nav-bottom">
+<a href="javascript:void(0);" id="open-popup"><b>В Х О Д</b></a>
+  </nav>
+
+  <div id="popup" class="popup" style="display: none;">
+    <div class="popup-content">
+<div class="container">
+
+<div class="screen">Это не случайность. Это лучший квест в реальности! Это честный выбор...
+</div>
+</div>
+      <div class="buttons" style="display: none;">
+       <button class="red-button">ВОЗМОЖНОСТЬ</button>
+        <span class="button-text">ИЛИ</span>
+        <button class="blue-button">ИЛЛЮЗИЯ</button>
+      </div>
+    </div>
+  </div>
+	  
+
+
+
+
+		
+    </div>
+
+    <!-- Страница 2 -->
+    <div id="page2" class="page2" style="display:none;">
+        <h2>ВЫБРАНА ИЛЛЮЗИЯ</h2>
+    <svg class="quest-symbol floating" viewBox="0 0 100 100">
+    <defs>
+      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#64ffda;stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:#1a1a2e;stop-opacity:1"/>
+      </linearGradient>
+    </defs>
+    <path d="M10,50 Q50,10 90,50 Q50,90 10,50" fill="none" stroke="url(#grad)" stroke-width="2"/>
+    <circle cx="50" cy="50" r="10" fill="#64ffda"/>
+  </svg>
+		
+		  <center><div class="content">
+    <div class="highlight-box">
+      <p><a href="javascript:void(0)" class="nav-link" onclick="showPage(event, 'page1')"> ПЕРЕОСМЫСЛИТЬ ВЫБОР</a></p>
+  </div></center>
+
+	  <!-- Заменяем GIF на видео -->
+  <center>
+    <video autoplay loop muted playsinline style="max-width: 100%; height: auto;">
+      <source src="images/run.mp4" type="video/mp4">
+      Ваш браузер не поддерживает видео.
+    </video>
+  </center>
+
+
+
+    </div>
+	
+	 <!-- Страница 3 -->
+    <div id="page3" class="page3" style="display:none;">
+	<canvas id="matrix"></canvas>
+
+<div class="waviy">
+   <span style="--i:1">K</span>
+   <span style="--i:2">V</span>
+   <span style="--i:3">E</span>
+   <span style="--i:4">S</span>
+   <span style="--i:5">T</span>
+   <span style="--i:6">P</span>
+   <span style="--i:7">O</span>
+   <span style="--i:8">R</span>
+   <span style="--i:9">T</span>
+   <span style="--i:10">A</span>
+   <span style="--i:11">L</span>
+   <span style="--i:12"><img src="images/32m.png" width="12" height="12" class="load-image" alt="Image 7"></span>
+   <span style="--i:13">R</span>
+   <span style="--i:14">U</span>
+  </div>
+	
+	
+	<div class="container-1">
+  <div>Приветствую, путник! <span class="emoji">😊</span> Дабы исключить гендер, буду обращаться как к потенциальному игроку. Здесь дружеская атмосфера, поэтому — на ТЫ. <span class="emoji">😏</span> Мы стоим на пороге грандиозных изменений и открытий, где перемены являются единственной константой, а гибкость мышления — единственным навыком, который позволяет оставаться актуальным в новом мире и сохранять равновесие, когда вокруг хаос. <span class="emoji">🌀</span>
+<br><br>
+Как раньше, уже не будет. Если это не про тебя, то читать дальше нет смысла. <span class="emoji">🚫</span> Если ты еще здесь, тогда, кто бы ты ни был, — забудь на время про свои регалии и статусы и проникнись атмосферой моего предложения. <span class="emoji">👇</span></div>
+</div>
+	
+	<div class="container-1">
+  <div>Это трансформационная игра. <span class="emoji">🎲</span> Это лучший одиночный квест в реальности, и это возможность убедиться в этом факте лично. <span class="emoji">✨</span>
+<br><br>
+Этот эксклюзив по смыслам и ценностям не имеет ничего общего с банальными квестами, но вобрал в себя их лучшие качества из пяти жанров: <span class="emoji">🧩</span> Эскейп-рум, <span class="emoji">🎭</span> Перформанс, <span class="emoji">🔍</span> Детектив, <span class="emoji">🧠</span> Логический и <span class="emoji">🌍</span> Приключение — в один, с возможным фейерверком эмоций, от которых захватывает дух и будоражит воображение. <span class="emoji">🔥</span> А воспоминания о ранее посещённых, лишь вызовут улыбку и недоумение. <span class="emoji">😊🤔</span>
+<br><br>
+<span class="emoji">🎯</span> Если же это твой первый, то велика вероятность, что он останется единственным, и на другие уже вряд ли захочешь пойти. <span class="emoji">🚀</span> Здесь не предусмотрены никакие ограничения, кроме добровольного отказа от предложенных возможностей, что автоматически повышает сложность, которую можно выбирать и менять самостоятельно неограниченное количество раз в любое время. <span class="emoji">⏳</span>
+<br><br>
+Время на прохождение не сковано лимитами и не устанавливается, а глубина интереса и погружения выбирается из индивидуальных предпочтений. <span class="emoji">🌌</span> Благородной целью является улучшение качества жизни игрока. <span class="emoji">🌟</span>
+<br><br>
+Всё это ждёт тебя. Здесь нет случайностей — это новая реальность. <span class="emoji">🚪</span> Это ключи от жизни ! <span class="emoji">🔑</span></div>
+</div>
+
+
+
+	<div class="container-1">
+  <div><span class="emoji">🌟</span> Это явление не задирает планку своим подходом и появлением, а задаёт новые тренды для всей индустрии в целом. <span class="emoji">💥</span> Кто расслабился — пора взбодриться <span class="emoji">⚡</span>, кто в напряге — умиротвориться. <span class="emoji">🧘</span>
+<br><br>
+Это премьера квеста, делающего жизнь интересной, преображая её на ДО и ПОСЛЕ, с версии привычной на обновлённую v2.0. <span class="emoji">🔄</span>
+<br><br>
+Не деньги правят миром, а идеи — для которых и умы, и деньги — пища. <span class="emoji">💡💸</span> Через многое нужно было пройти, чтобы такую идею взрастить и воплотить: простую и понятную, такую, чтобы улучшала, была прозрачной и полезной, чтобы соткана из благ. <span class="emoji">🌿💎</span> Через годы, боль, потери, слёзы. Задача решена. Почти на Изи. <span class="emoji">😏</span> Шедевр готов, встречайте, наслаждайтесь —> Это портал в обитель возможностей. <span class="emoji">🌈</span>
+<br><br>
+Но этот квест подойдёт не всем. <span class="emoji">❌</span> И чтобы не изнурять тебя заполнением бесячих анкет, с указанием e-mail, tg и номером телефона —> этот ресурс и всё его содержимое, включая стиль, музыку, некоторые типо недочёты, абсолютно всё, до мелочей, — всё так, как и должно быть, для того чтобы исключить всех тех —> кому не резонирует или что-либо не нравится. <span class="emoji">🚫🔮</span></div>
+</div>
+
+
+	<div class="container-1">
+  <div>Не имей ожиданий — и не встретишь разочарований. Так же будь готов к тому, что воздушные замки могут раствориться <span class="emoji">💨</span>, а картина мира и привычный уклад жизни о том, что только так и никак иначе, могут рассыпаться как карточный домик. <span class="emoji">🏰</span>
+<br><br>
+Но пугаться не стоит. <span class="emoji">😌</span> Это произойдёт в любом случае, только в квесте это филигранно и не так шокирующе, как наяву. <span class="emoji">🎭✨</span>
+<br><br>
+Здесь нет места для нытья и сожалений. <span class="emoji">🚫😢</span> Здесь нет места для тех, кто не готов к самостоятельным решениям, кто привык полагаться и опираться на чужое мнение. Это мощный квест, дарующий силу, власть и вдохновение. <span class="emoji">🧠</span> Принять их или упустить — это выбор. <span class="emoji">🤔</span>
+<br><br>
+Если не готов к таким открытиям — пройди мимо. <span class="emoji">🚶</span> Потому что в этой игре возможно придётся делать непростые выборы, где, соглашаясь на меньшее, — отказываешься от большего, а делая выбор в пользу одного, — отказываешься от другого. <span class="emoji">⚖️</span> И весь твой персональный сюжет будет полностью зависеть от принятых тобой же решений. <span class="emoji">🎯</span>
+<br><br>
+Готов ли ты к такой игре? <span class="emoji">🎲</span> Если да, то добро пожаловать. Если нет — это тоже выбор. <span class="emoji">🚪🌟</span></div>
+</div>
+
+
+
+	<div class="container-1">
+  <div>В настоящее время открыта бронь на июнь, июль, август 2025. <span class="emoji">📅</span>
+Комбинация доступа: 88888 российских рублей (это энергообмен: цена символическая, а ценность возрастающая). <span class="emoji">💎</span>
+<br><span class="emoji">💳 </span>100% предоплата.
+<br><br>
+Квест проведу лично, пока только Москва и СПБ. <span class="emoji">🏙️</span>
+Если желание есть, но нет необходимых цифр, тогда не нужно прибегать к каким-либо займам, кредитам, рассрочкам и прочим одолжениям. <span class="emoji">🚫💳</span> Значит, пока не нужно. Но если действительно есть отклик, то в нужное время возможность появится. <span class="emoji">🌟</span> Сюда нужно заходить в лёгкости. <span class="emoji">🍃</span>
+<br><br>
+Если ты ещё здесь, тогда пришла пора отдохнуть от чтения и достать наушники. <span class="emoji">🎧</span> Кнопка PLAY ждёт твоего тапа. <span class="emoji">🎶👇</span></div>
+</div>
+
+
+
+
+	
+<div class="matrix-rain"></div>
+<div class="content-wrapper">
+  <div class="player-container">
+    <div class="song-info">
+      <h2 class="player-title">OST</h2>
+    </div>
+    
+    <div class="playlist" id="playlist"></div>
+    
+    <div class="progress-container" id="progress-container">
+      <div class="preload-progress" id="preload-progress"></div>
+      <div class="progress" id="progress"></div>
+    </div>
+    
+    <div class="time-info">
+      <span id="current-time">0:00</span>
+      <span id="duration">0:00</span>
+    </div>
+    
+    <div class="controls">
+      <button class="prev-btn" id="prev">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+        </svg>
+      </button>
+      <button class="play-btn" id="play">
+        <svg viewBox="0 0 24 24" id="play-icon">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" id="pause-icon" style="display: none;">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      </button>
+      <button class="next-btn" id="next">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="player-footer-text">
+    <b>ТЫ УЖЕ БЛИЗОК</b>
+  </div>
+</div>
+	
+	
+	
+	<div class="container-1">
+  <div>Если что то не понятно и нужна конкретика.. <span class="emoji">🤔</span> Перечитай ещё раз с самого начала и прослушай плейлист до конца. <span class="emoji">🎶</span> В остальном намеренно сохраняется интрига с щепоткой неизвестности. <span class="emoji">🕵️✨</span>
+<br><br>
+Никаких возвратов нет, никакие претензии не принимаются. <span class="emoji">🚫</span> Считай это лотереей с возможностью сорвать джекпот всей жизни, вероятность которого зависит только от тебя. <span class="emoji">🎰💎</span>
+<br><br>
+Полагаю, очевидно, что это не про объёмы продаж, лиды и чеки. <span class="emoji">📊❌</span> И если ты готов двигаться с жизнью, в её стиле, в страстном танце, в едином порыве, не выискивая сложности, если готов открыться возможностям — то так и напиши. <span class="emoji">✍️</span>
+<br><br>
+И вот настал момент сделать свой первый выбор, от которого зависит, познакомимся мы с тобой или нет.</div>
+
+    <div class="checkbox-container">
+      <input type="checkbox" id="imageToggle" class="custom-checkbox">
+      <label for="imageToggle">Всё устраивает</label>
+    </div>
+<center><button class="start-button" disabled>
+  <img src="images/start.png" alt="Sample image" class="toggle-image">
+</button></center> 
+  
+  
+</div>
+	
+	
+
+	
+
+	
+		<div class="container-1">
+  <div><center>Открыт для предложений и инвестиций для запуска на мир <span class="emoji">🌍</span>
+  <br>Возможно иное сотрудничество. <span class="emoji">🤝</span>
+<br>
+Если это про тебя — пиши. <span class="emoji">✍️</span> Если нет — мир велик, и каждый найдёт свой путь. <span class="emoji">🌌🚶</span>
+<br>
+        2025</center>
+  
+  
+  </div>
+</div>
+	
+  
+
+
+
+
+    </div>
+  </div>
+
+  <script>
+          let starInterval;
+		  
+    document.addEventListener('DOMContentLoaded', function () {
+      const loader = document.querySelector('.loader');
+      const progressBar = document.getElementById('progress-bar');
+      const progressBarContainer = document.querySelector('.progress-bar-container');
+      const portalText = document.querySelector('.portal-text');
+
+      // Устанавливаем ширину прогресс-бара равной ширине текста
+      progressBarContainer.style.width = `${portalText.offsetWidth}px`;
+
+      let progress = 0;
+      const loadingInterval = setInterval(() => {
+        progress += 2;
+        loader.setAttribute('data-progress', progress);
+        progressBar.style.width = `${progress}%`;
+        if (progress >= 100) {
+          clearInterval(loadingInterval);
+          document.getElementById('preloader-container').style.opacity = '0';
+          setTimeout(() => {
+            document.getElementById('preloader-container').style.display = 'none';
+            document.getElementById('page1').classList.add('active');
+			
+			
+			
+                    //document.getElementById('content').style.display = 'block';
+                   // document.body.classList.add('page1');
+                    createStars();
+                    starInterval = setInterval(createShootingStar, 2000);
+			
+			
+			//document.getElementById('content').style.display = 'block';
+			//showPage(event, 'page1');
+
+        // Создание падающих звезд с интервалом
+        //setInterval(createShootingStar, 2000);
+
+// Показываем куб после создания звезд
+        setTimeout(() => {
+          document.getElementById('cube').style.display = 'block'; // Показываем куб
+          setTimeout(disassembleCube, 1200); // Запускаем анимацию куба
+        }, 10); // Задержка перед показом куба
+
+
+
+			//setTimeout(disassembleCube, 1000);
+          }, 500);
+        }
+      }, 40);
+    });
+
+    function showPage(event, pageId) {
+        event.preventDefault();
+
+  // Сбрасываем состояние чекбокса
+  const checkbox = document.getElementById('imageToggle');
+  if (checkbox) {
+    checkbox.checked = false; // Снимаем галочку
+  }
+  
+            // Удаляем все звезды при любой смене страницы
+            clearInterval(starInterval);
+            document.querySelectorAll('.star, .shooting-star').forEach(el => el.remove());
+  
+        // Убираем текущий класс оформления
+        document.body.className = '';
+
+        // Скрываем все страницы
+        document.getElementById('page1').style.display = 'none';
+        document.getElementById('page2').style.display = 'none';
+        document.getElementById('page3').style.display = 'none';
+		
+        // Показываем нужную страницу
+        document.getElementById(pageId).style.display = 'block';
+
+        // Добавляем уникальный класс для оформления страницы
+        document.body.classList.add(pageId);
+		
+			
+            // Создаем звезды только если это страница 1
+            if (pageId === 'page1') {
+                createStars();
+                starInterval = setInterval(createShootingStar, 2000);
+            }
+
+					            // Если открыта страница 3, выполняем код для canvas
+            if (pageId === 'page3') {
+					
+
+					
+                initializeCanvas();
+            }
+        }
+
+
+
+
+
+
+        // Создание мигающих звезд
+        function createStars() {
+            const numStars = 200;
+            for (let i = 0; i < numStars; i++) {
+                let star = document.createElement('div');
+                star.className = 'star';
+                
+                let size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                star.style.left = `${Math.random() * window.innerWidth}px`;
+                star.style.top = `${Math.random() * window.innerHeight}px`;
+                
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                document.body.appendChild(star);
+            }
+        }
+
+        // Создание падающих звезд
+        function createShootingStar() {
+            let shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
+            
+            const startX = Math.random() * window.innerWidth * 0.5 + window.innerWidth * 0.5;
+            const startY = Math.random() * window.innerHeight * 0.3;
+            
+            shootingStar.style.left = `${startX}px`;
+            shootingStar.style.top = `${startY}px`;
+            
+            document.body.appendChild(shootingStar);
+            
+            shootingStar.addEventListener('animationend', () => {
+                shootingStar.remove();
+            });
+        }
+
+        window.addEventListener('resize', () => {
+            if (document.body.classList.contains('page1')) {
+                document.querySelectorAll('.star').forEach(star => {
+                    star.style.left = `${Math.random() * window.innerWidth}px`;
+                    star.style.top = `${Math.random() * window.innerHeight}px`;
+                });
+            }
+        });
+
+
+
+
+
+
+
+
+
+        function initializeCanvas() {
+var q=document.getElementById('matrix'),
+s=window.screen,
+w=q.width=s.width,
+h=q.height=s.height,
+p=Array(256).join(1).split(''),
+c=q.getContext('2d'),
+m=Math;
+
+setInterval(function(){
+c.fillStyle='rgba(0,0,0,0.05)';
+c.fillRect(0,0,w,h);
+c.fillStyle='rgba(0,255,0,1)';
+p=p.map(function(v,i){
+r=m.random();
+var str = String.fromCharCode(m.floor(2720+r*33));
+c.fillText(str,i*10,v);
+v+=10;
+var ret = v>768+r*1e4?0:v
+return ret;
+});
+},33);
+
+    }
+  </script>
+<script src="script/modscript.js"></script>
+<script src="script/3script.js"></script>
+<script src="script/monitor.js"></script>
+<script src="script/url.js"></script>
+<script src="script/player.js"></script>
 </body>
 </html>

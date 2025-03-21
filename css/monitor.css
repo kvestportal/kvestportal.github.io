@@ -1,0 +1,55 @@
+body {
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 311px;
+  height: 154px;
+  background-image: url('Monitor-min.png'); /* URL вашего изображения */
+  background-size: cover; /* Сохранять пропорции и покрывать контейнер */
+  background-position: center;
+}
+
+.screen {
+
+  position: relative; /* Позиционирование относительно контейнера */
+  margin-top: -57px; /* Отступ от верхнего края фото на 50px */
+  width: 196px;
+  height: 86px;
+  font: 16px/120% 'Courier New', Courier, Arial;
+  padding: 5px;
+  background: #000; /* 282727 */
+  color: lime;
+  white-space: pre-wrap;
+  z-index: 2;
+}
+
+.screen span {
+  visibility: hidden;
+}
+
+.screen span.visible {
+  visibility: visible;
+}
+
+span.t {
+  min-width: 12px;
+  max-height: 24px;
+  display: inline-block;
+}
+
+.screen span.cursor {
+  background: lime;
+  animation: blinking 1s step-start infinite;
+}
+
+@keyframes blinking {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

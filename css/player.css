@@ -1,0 +1,335 @@
+:root {
+  --primary-color: #00ff00;
+  --secondary-color: #003300;
+  --bg-color: #000000;
+  --text-color: #00ff00;
+  --matrix-font: 'Courier New', monospace;
+}
+
+body {
+
+}
+
+.matrix-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes matrix-rain {
+  0% { transform: translateY(-100%); opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+.player-container {
+  background: rgba(0, 40, 0, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+  width: 350px;
+  color: var(--text-color);
+  position: relative;
+  backdrop-filter: blur(5px);
+  max-width: calc(100% - 20px); 
+  margin: 0 auto; /* Center horizontally */
+  margin-bottom: 1rem; /* Add space for text below */
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 480px) {
+  .player-container {
+    width: calc(100% - 20px);
+    padding: 1rem;
+  }
+  
+  .controls {
+    margin-top: 1rem;
+  }
+  
+  .player-title {
+    font-size: 1.5rem;
+  }
+  
+  .playlist {
+    max-height: 150px;
+  }
+}
+
+.player-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid var(--primary-color);
+  animation: glitch 2s infinite;
+  pointer-events: none;
+border-radius: 15px; /* Скругление для псевдоэлемента также */
+}
+
+@keyframes glitch {
+  0% { clip-path: inset(0 0 0 0); }
+  2% { clip-path: inset(20px 0 0 0); }
+  4% { clip-path: inset(0 0 0 0); }
+  96% { clip-path: inset(0 0 0 0); }
+  98% { clip-path: inset(0 20px 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+.song-info {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.player-title {
+  font-size: 1.8rem;
+  margin: 0;
+  color: var(--primary-color);
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  font-family: var(--matrix-font);
+  letter-spacing: 0px;
+}
+
+.playlist {
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border: 1px solid var(--primary-color);
+  background: rgba(0, 20, 0, 0.5);
+font-family: var(--matrix-font);
+}
+
+.playlist-item {
+  padding: 0.5rem 1rem;
+  margin: 0.3rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid transparent;
+}
+
+.playlist-item:hover {
+  border-color: var(--primary-color);
+  background: rgba(0, 255, 0, 0.1);
+  text-shadow: 0 0 5px var(--primary-color);
+}
+
+.playlist-item.active {
+  background: rgba(0, 255, 0, 0.2);
+  border-color: var(--primary-color);
+}
+
+.track-play-btn {
+  background: none;
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+  padding: 5px;
+  outline: none;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.track-play-btn svg {
+  width: 15px;
+  height: 15px;
+  fill: var(--primary-color);
+  filter: drop-shadow(0 0 3px var(--primary-color));
+}
+
+.track-play-btn:hover {
+  background: rgba(0, 255, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.track-info {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.track-number {
+  min-width: 30px;
+  text-align: right;
+}
+
+.progress-container {
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+  margin: 10px 0;
+  height: 6px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress {
+  background: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+  position: relative;
+  z-index: 2;
+}
+
+.preload-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: rgba(0, 255, 0, 0.55);
+  z-index: 1;
+  box-shadow: inset 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+.time-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  text-shadow: 0 0 5px var(--primary-color);
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.prev-btn,
+.next-btn {
+  background: none;
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
+  padding: 8px;
+  outline: none;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.prev-btn svg,
+.next-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--primary-color);
+  filter: drop-shadow(0 0 5px var(--primary-color));
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  background: rgba(0, 255, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+.prev-btn:disabled,
+.next-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.play-btn {
+  background: none;
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
+  padding: 10px;
+  outline: none;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.play-btn svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--primary-color);
+  filter: drop-shadow(0 0 5px var(--primary-color));
+}
+
+.play-btn:hover {
+  background: rgba(0, 255, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+.pulse {
+  animation: matrix-pulse 2s infinite;
+}
+
+@keyframes matrix-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px var(--primary-color); }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px var(--primary-color); }
+  100% { transform: scale(1); box-shadow: 0 0 10px var(--primary-color); }
+}
+
+/* Стилизация для браузеров на основе WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px; /* Ширина вертикальной полосы прокрутки */
+  height: 12px; /* Высота горизонтальной полосы прокрутки */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Прозрачный трек */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00FF00; /* Ярко-зелёный цвет ползунка */
+  border-radius: 6px; /* Закругление углов ползунка */
+  border: 3px solid transparent; /* Прозрачная граница ползунка */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00CC00; /* Более тёмный зелёный при наведении */
+}
+
+/* Стилизация для Firefox */
+html {
+  scrollbar-width: thin; /* Тонкая полоса прокрутки */
+  scrollbar-color: #00FF00 transparent; /* Ярко-зелёный ползунок и прозрачный трек */
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 480px) {
+  .content-wrapper {
+    padding: 0.5rem;
+  }
+}
+
+.player-footer-text {
+  color: var(--primary-color);
+  text-align: center;
+  font-family: var(--matrix-font);
+  margin-top: 1rem;
+  text-shadow: 0 0 5px var(--primary-color);
+  font-size: 0.9rem;
+  max-width: 350px;
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 480px) {
+  .player-footer-text {
+    max-width: calc(100% - 20px);
+    margin: 1rem 10px;
+  }
+}

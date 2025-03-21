@@ -1,0 +1,124 @@
+body {
+    background: #000;
+    margin: 0;
+    font-family: Arial;
+    min-width: 320px;
+
+            overflow: hidden;
+}
+
+
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px;
+    border-bottom: solid 1px #00ff30; /* 90f9 голубй на 00ff30 зеленый это нав сверху полоса */
+}
+
+
+nav a {
+    color: #fff;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin: 10px 10px;
+}
+
+
+.cube {
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    top:  calc(50% - 180px / 2);
+    left: calc(50% - 180px / 2);
+    transform-style: preserve-3d;
+    transform: perspective(700px)  rotateX(-36deg) rotateY(-27deg);
+    transition: all 1s ease;
+}
+
+.cube > article {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    transform-style: preserve-3d;
+    background: linear-gradient(0deg, #070b0f, #111b29);
+    color: #fff;
+    line-height: 150%;
+    letter-spacing: 0.05em;
+    box-shadow:
+        0 0 1px #00ff30,		/* f00 красный на 00ff30 зеленый */
+        0 0 1px #00ff30,		/* f00 красный на 00ff30 зеленый */
+        0 0 1px #00ff30,		/* f00 красный на 00ff30 зеленый */
+        0 0 1px #00ff30,		/* f00 красный на 00ff30 зеленый */
+        0 0 10px #00ff30 inset,	/* d0e9 голубой на 00e921 зеленый потемнее */
+        0 0 35px #00ff30;		/* 53d5 синий на 00e94d зеленый чуть светлее */
+}
+
+
+.back   {transform: rotateX(-180deg) translateZ(90px);}
+.top    {transform: rotateX( 90deg)  translateZ(90px);}
+.front  {transform:                  translateZ(90px);}
+.bottom {transform: rotateX(-90deg)  translateZ(90px);}
+.left   {transform: rotateY(-90deg)  translateZ(90px);}
+.right  {transform: rotateY( 90deg)  translateZ(90px);}
+
+
+.cube > article h2 {
+    text-transform: uppercase;
+    color: #00ff30;	/* 900 красно-бордовый на 00ff30 зеленый хз че меняет */
+    font-size: 16px;
+    font-weight: 600;
+
+}
+.cube > article p {
+    font-weight: 200;
+    font-size: 12px;
+}
+
+.cube > article img {
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+    z-index: -1; /* Устанавливаем звезды на задний план */
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: shoot 1s linear;
+    z-index: -1; /* Устанавливаем звезды на задний план */
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+
+        @keyframes shoot {
+            0% { 
+                transform: translateX(0) translateY(0);
+            }
+            100% { 
+                transform: translateX(-200px) translateY(200px);
+            }
+        }

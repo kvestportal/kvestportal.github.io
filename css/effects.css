@@ -1,0 +1,191 @@
+﻿body {
+  font-family: 'Boxed', Verdana; /* Шрифт для body */
+  margin: 0;
+  padding: 0;
+}
+
+/* Верхнее меню */
+nav#nav-top {
+  background: linear-gradient(0deg, #70fd8b, #000, #70fd8b); 
+  box-shadow: 0 0 35px #00ff30; 
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+nav#nav-top a {
+  color: #00ff30;
+  font-weight: 200;
+  text-decoration: none;
+  border-bottom: solid 1px #00ff30;
+  padding-bottom: 1px;
+  position: relative;
+  text-shadow: 0 0 20px #00ff30,0 0 20px #00ff30,0 0 10px #00ff30,0 0 5px #00ff30;
+  white-space: normal;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+nav#nav-top a:hover {
+  color: #fff;
+}
+
+/* Нижнее меню */
+nav#nav-bottom {
+  background: linear-gradient(0deg, #70fd8b, #000, #70fd8b); 
+  box-shadow: 0 0 35px #00ff30; 
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 5px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+nav#nav-bottom a {
+  color: #ff0000;
+  font-weight: 200;
+  text-decoration: none;
+text-shadow: 0 0 20px #000, 0 0 20px #000, 0 0 20px #000, 0 0 5px #000;
+  padding-bottom: 2px;
+  position: relative;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+nav#nav-bottom a:hover {
+  color: #fff;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  nav#nav-top,
+  nav#nav-bottom {
+    flex-wrap: wrap; /* Разбиваем меню на строки */
+    justify-content: center; /* Центрируем элементы по горизонтали */
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+nav span {
+    color: #fff;
+    font-weight: 200;
+    text-decoration: none;
+   
+    padding-bottom: 3px;
+    position: relative; /* f00 красный на text-shadow: 0 0 20px #00ff30 свечение вокруг текста */
+    text-shadow: 0 0 20px #00ff30,0 0 20px #00ff30,0 0 10px #00ff30,0 0 5px #00ff30; /* 90f фиолетовый на 00ff30 зеленый надпись сверху становится зеленой */
+    white-space: normal;
+    font-size: 15px;
+	
+	
+    padding: 0 10px;
+    margin: 10px 10px;
+}
+
+
+
+.cube.animation {
+    animation: rotation 30s ease-in-out infinite;
+}
+
+.cube > article {
+    padding: 20px;
+    transition: all 0.5s ease;
+}
+
+.cube > article::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    box-shadow:
+        0 0 1px #00ff30,
+        0 0 1px #00ff30,
+        0 0 5px #00ff30,	/* !!!!!!!!!!!!!d0e5 голубой на 00ff30 зеленый вторичный бордюд на кубике */
+        0 0 10px #00ff30 inset;	/* !!!!!!!!!!!d0e5 голубой на 00ff30 зеленый вторичный бордюр на кубике */
+    transition: inherit;
+}
+
+.cube > article::after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    box-shadow:
+        0 0 1px #00ff30,
+        0 0 5px #00ff30,	/* !!!!!!!!!!!d0e3 голубой на 00ff30 зеленый вторичный бордюд на кубике */
+        0 0 5px #00ff30 inset;	/* !!!!!!!!!!!!!!d0e5 голубой на 00ff30 зеленый вторичный бордюд на кубике */
+    transition: inherit;
+}
+
+.cube > article h2 {
+    text-shadow: 0 0 0px #00ff30,  0 0 20px #00ff30;
+}
+.cube > article p {
+    text-shadow: 0 0 0px #00ff30,  0 0 20px #00ff30;
+}
+
+.cube.distance {
+    width: 160px;
+    height: 160px;
+    top:  calc(50% - 160px / 2);
+    left: calc(50% - 160px / 2);
+}
+
+.cube.distance > article {
+    border-radius: 25px;
+    padding: 15px;
+}
+.cube.distance > article::before {
+    border-radius: 20px;
+    transform: rotateY(0deg) translateZ(-20px);
+    background: linear-gradient(0deg, #000, #111b29);
+}
+.cube.distance > article::after {
+    border-radius: 15px;
+    background: linear-gradient(0deg, #0009, #111b29);
+    transform: rotateY(0deg) translateZ(-40px);
+}
+.cube.distance > article h2 {
+    font-size: 16px;
+}
+.cube.distance > article p {
+    font-size: 12px;
+}
+
+
+.distance .back   {transform: rotateX(-180deg) translateZ(130px);}
+.distance .top    {transform: rotateX( 90deg)  translateZ(130px);}
+.distance .front  {transform:                  translateZ(130px);}
+.distance .bottom {transform: rotateX(-90deg)  translateZ(130px);}
+.distance .left   {transform: rotateY(-90deg)  translateZ(130px);}
+.distance .right  {transform: rotateY( 90deg)  translateZ(130px);}
+
+
+@keyframes rotation {
+    50% {transform:perspective(700px) rotateX(360deg) rotateY(720deg);}
+}
+
+
+

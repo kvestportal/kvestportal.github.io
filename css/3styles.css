@@ -1,0 +1,38 @@
+.checkbox-container {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.custom-checkbox {
+  margin-right: 5px;
+}
+
+.custom-checkbox + label {
+  color: #00ff00;
+  cursor: pointer;
+}
+
+.image-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.toggle-image {
+  max-width: 100%;
+  filter: grayscale(100%);
+  pointer-events: none;
+  transition: filter 0.3s ease;
+}
+
+.image-link {
+  pointer-events: none;
+  display: block; /* Ссылка занимает всю область изображения */
+}
+
+#imageToggle:checked ~ .image-container .toggle-image {
+  filter: grayscale(0);
+}
+
+#imageToggle:checked ~ .image-container .image-link {
+  pointer-events: auto;
+}
